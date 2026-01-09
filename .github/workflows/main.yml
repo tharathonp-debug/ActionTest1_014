@@ -1,6 +1,13 @@
-def add(a, b):
-    if a < 0 or b < 0:
-        return 0
-    return a + b
+name: Python CI
 
-print(add(2, 3))
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest
